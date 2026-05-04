@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>О нас — Ortobase</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/css/style.css" rel="stylesheet">
+</head>
+<body>
+
+<!-- НАВБАР -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="index.html">
+      <i class="bi bi-heart-pulse-fill text-info me-2"></i>Ortobase
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="nav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="index.html">Главная</a></li>
+        <li class="nav-item"><a class="nav-link" href="about.html">О нас</a></li>
+        <li class="nav-item"><a class="nav-link" href="catalog.php">Каталог</a></li>
+        <li class="nav-item"><a class="nav-link" href="why.html">Почему мы</a></li>
+        <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ШАПКА СТРАНИЦЫ -->
+<section class="py-4 section-alt border-bottom">
+  <div class="container">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb mb-1">
+        <li class="breadcrumb-item"><a href="index.html" class="text-decoration-none" style="color:var(--color-sky-500)">Главная</a></li>
+        <li class="breadcrumb-item active">О нас</li>
+      </ol>
+    </nav>
+    <h1 class="mb-0">О нас</h1>
+  </div>
+</section>
+
+<!-- ИСТОРИЯ + ФОТО -->
+<section class="py-5">
+  <div class="container">
+    <div class="row align-items-center g-5">
+      <div class="col-lg-6">
+        <span class="badge rounded-pill mb-3 px-3 py-2" style="background:var(--color-sky-200);color:var(--color-blue-700);">
+          <i class="bi bi-calendar3 me-1"></i>Основан в 2019 году
+        </span>
+        <h2 class="mb-3">Ortobase — магазин, которому доверяют</h2>
+        <p>Мы начинали как небольшой специализированный магазин для людей с ортопедическими проблемами. За пять лет работы мы выросли в полноценный ортопедический центр с широким ассортиментом сертифицированной продукции.</p>
+        <p>Наша миссия проста: помочь каждому клиенту найти именно тот товар, который улучшит качество его жизни. Мы не продаём «вообще что-то ортопедическое» — мы подбираем под конкретного человека, его проблему и образ жизни.</p>
+        <p class="mb-0">Все товары в ассортименте прошли проверку по медицинским стандартам. Мы сотрудничаем только с производителями, имеющими действующие сертификаты соответствия.</p>
+      </div>
+      <div class="col-lg-6">
+        <img src="https://picsum.photos/seed/ortoabout/680/460"
+             alt="Магазин Ortobase"
+             class="img-fluid rounded-3 shadow-sm w-100"
+             style="height:380px;object-fit:cover;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ЦИФРЫ -->
+<section class="py-5 section-alt">
+  <div class="container">
+    <h2 class="text-center mb-5">Ortobase в цифрах</h2>
+    <div class="row g-4 text-center">
+      <div class="col-6 col-md-3">
+        <div class="stat-number">5</div>
+        <div class="mt-1 fw-semibold">лет на рынке</div>
+        <div class="small text-muted mt-1">с 2019 года</div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stat-number">3 000+</div>
+        <div class="mt-1 fw-semibold">довольных клиентов</div>
+        <div class="small text-muted mt-1">по всей России</div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stat-number">50+</div>
+        <div class="mt-1 fw-semibold">моделей в наличии</div>
+        <div class="small text-muted mt-1">стельки, обувь, корсеты</div>
+      </div>
+      <div class="col-6 col-md-3">
+        <div class="stat-number">100%</div>
+        <div class="mt-1 fw-semibold">сертификаты</div>
+        <div class="small text-muted mt-1">медицинские стандарты</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- КОМАНДА (мини-блок) -->
+<section class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-2">Наша команда</h2>
+    <p class="text-center text-muted mb-5">Профессионалы, которые помогают вам найти правильное решение</p>
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-4 text-center">
+        <img src="https://picsum.photos/seed/team1/160/160"
+             alt="Анна Соколова"
+             class="rounded-circle mb-3 shadow-sm"
+             style="width:100px;height:100px;object-fit:cover;">
+        <h6 class="fw-bold mb-0">Анна Соколова</h6>
+        <small class="text-muted">Ортопед-консультант</small>
+      </div>
+      <div class="col-md-4 text-center">
+        <img src="https://picsum.photos/seed/team2/160/160"
+             alt="Дмитрий Захаров"
+             class="rounded-circle mb-3 shadow-sm"
+             style="width:100px;height:100px;object-fit:cover;">
+        <h6 class="fw-bold mb-0">Дмитрий Захаров</h6>
+        <small class="text-muted">Руководитель магазина</small>
+      </div>
+      <div class="col-md-4 text-center">
+        <img src="https://picsum.photos/seed/team3/160/160"
+             alt="Мария Петрова"
+             class="rounded-circle mb-3 shadow-sm"
+             style="width:100px;height:100px;object-fit:cover;">
+        <h6 class="fw-bold mb-0">Мария Петрова</h6>
+        <small class="text-muted">Специалист по подбору</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- КОНТАКТЫ -->
+<section class="py-5 section-alt">
+  <div class="container">
+    <h2 class="text-center mb-4">Как нас найти</h2>
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-4 text-center">
+        <div class="feature-icon-box mb-3"><i class="bi bi-geo-alt"></i></div>
+        <h6 class="fw-semibold">Адрес</h6>
+        <p class="text-muted small mb-0">ул. Здоровья, 12, Москва<br>ТЦ «МедПлаза», 2 этаж</p>
+      </div>
+      <div class="col-md-4 text-center">
+        <div class="feature-icon-box mb-3"><i class="bi bi-telephone"></i></div>
+        <h6 class="fw-semibold">Телефон</h6>
+        <p class="text-muted small mb-0">+7 (495) 123-45-67<br>Пн–Сб: 9:00–20:00</p>
+      </div>
+      <div class="col-md-4 text-center">
+        <div class="feature-icon-box mb-3"><i class="bi bi-envelope"></i></div>
+        <h6 class="fw-semibold">E-mail</h6>
+        <p class="text-muted small mb-0">info@ortobase.ru<br>Ответим в течение часа</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ПОДВАЛ -->
+<footer class="py-4">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <h5 class="text-white fw-bold mb-2">
+          <i class="bi bi-heart-pulse-fill text-info me-2"></i>Ortobase
+        </h5>
+        <p class="small">Ортопедические товары для здоровой и активной жизни.</p>
+      </div>
+      <div class="col-md-4">
+        <h6 class="text-white mb-3">Навигация</h6>
+        <a href="index.html" class="footer-link small">Главная</a>
+        <a href="about.html" class="footer-link small">О нас</a>
+        <a href="catalog.php" class="footer-link small">Каталог</a>
+        <a href="why.html" class="footer-link small">Почему мы</a>
+        <a href="faq.html" class="footer-link small">FAQ</a>
+      </div>
+      <div class="col-md-4">
+        <h6 class="text-white mb-3">Контакты</h6>
+        <p class="small mb-1"><i class="bi bi-geo-alt me-1"></i>ул. Здоровья, 12, Москва</p>
+        <p class="small mb-1"><i class="bi bi-telephone me-1"></i>+7 (495) 123-45-67</p>
+        <p class="small mb-1"><i class="bi bi-clock me-1"></i>Пн–Сб: 9:00–20:00</p>
+      </div>
+    </div>
+    <hr class="mt-4 mb-3">
+    <p class="text-center small mb-0">© 2025 Ortobase. Все права защищены.</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="assets/js/script.js"></script>
+</body>
+</html>
