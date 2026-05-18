@@ -4,12 +4,12 @@ $(function () {
   var currentPage = window.location.pathname.split('/').pop().replace('.php', '') || 'dashboard';
 
   /* ---- Загрузка сайдбара и топбара через jQuery ---- */
-  $('#sidebar-placeholder').load('layout/sidebar.php', function () {
+  $('#sidebar-placeholder').load('layout/sidebar.html', function () {
     /* Подсветить активный пункт */
     $('.sidebar-link[data-page="' + currentPage + '"]').addClass('active');
   });
 
-  $('#topbar-placeholder').load('layout/topbar.php', function () {
+  $('#topbar-placeholder').load('layout/topbar.html', function () {
     /* Подсветить активный пункт топбара */
     $('.topbar-nav-link[data-page="' + currentPage + '"]').addClass('active');
 
