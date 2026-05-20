@@ -1,0 +1,65 @@
+<aside class="app-sidebar offcanvas-lg offcanvas-start d-flex flex-column"
+       tabindex="-1" id="appSidebar">
+
+  <!-- Логотип -->
+  <div class="px-3 pt-4 pb-3 d-flex align-items-center justify-content-between flex-shrink-0">
+    <div class="d-flex align-items-center gap-2">
+      <i class="bi bi-heart-pulse-fill fs-5" style="color: var(--accent)"></i>
+      <span class="fw-bold fs-5 text-white">Ortobase</span>
+    </div>
+    <button type="button" class="btn-close btn-close-white d-lg-none"
+            data-bs-dismiss="offcanvas" data-bs-target="#appSidebar"
+            aria-label="Закрыть"></button>
+  </div>
+
+  <!-- Навигация -->
+  <nav class="px-2 flex-grow-1 overflow-y-auto">
+
+    <div class="section-label">Главное</div>
+
+    <a href="dashboard.html" class="nav-link d-flex align-items-center gap-2" data-page="dashboard">
+      <i class="bi bi-speedometer2" style="font-size:1rem;width:18px"></i>
+      <span>Дэшборд</span>
+    </a>
+
+    <a href="catalog.html" class="nav-link d-flex align-items-center justify-content-between" data-page="catalog">
+      <span class="d-flex align-items-center gap-2">
+        <i class="bi bi-box-seam" style="font-size:1rem;width:18px"></i>
+        <span>Каталог</span>
+      </span>
+      <span class="badge rounded-pill" style="background: rgba(255,255,255,0.15)">9</span>
+    </a>
+
+    <a href="categories.html" class="nav-link d-flex align-items-center justify-content-between" data-page="categories">
+      <span class="d-flex align-items-center gap-2">
+        <i class="bi bi-tag" style="font-size:1rem;width:18px"></i>
+        <span>Категории</span>
+      </span>
+      <span class="badge rounded-pill" style="background: rgba(255,255,255,0.15)">3</span>
+    </a>
+
+    <div class="section-label">Доступ</div>
+
+    <a href="users.html" class="nav-link d-flex align-items-center justify-content-between" data-page="users">
+      <span class="d-flex align-items-center gap-2">
+        <i class="bi bi-people" style="font-size:1rem;width:18px"></i>
+        <span>Пользователи</span>
+      </span>
+      <span class="badge rounded-pill" style="background: rgba(255,255,255,0.15)">6</span>
+    </a>
+
+    <a href="settings.html" class="nav-link d-flex align-items-center gap-2" data-page="settings">
+      <i class="bi bi-gear" style="font-size:1rem;width:18px"></i>
+      <span>Настройки</span>
+    </a>
+
+  </nav>
+
+  <!-- Подвал -->
+  <div class="px-3 py-3 flex-shrink-0" style="border-top: 1px solid rgba(255,255,255,0.08)">
+    <div class="small" style="color: rgba(255,255,255,0.35); line-height: 1.6">
+      v0.1 · Курсовой Ortobase<br>© 2025
+    </div>
+  </div>
+
+</aside>

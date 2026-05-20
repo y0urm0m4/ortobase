@@ -1,0 +1,30 @@
+:root {
+  --bg-page:             #0F1B2D;
+  --bg-card:             #15243B;
+  --bg-sidebar:          #0B2545;
+  --bg-soft:             #1A2C47;
+  --bg-input:            #15243B;
+
+  --text-main:           #E8EEF7;
+  --text-muted:          #8A98A8;
+  --text-sidebar:        #FFFFFF;
+  --text-sidebar-muted:  rgba(255, 255, 255, 0.55);
+
+  --border:              #22344F;
+  --border-input:        #2A3D5C;
+
+  --accent:              #3DA9FC;
+  --accent-hover:        #1E5F8E;
+  --accent-active:       #3DA9FC;
+
+  --success:             #2EA66C;
+  --warning:             #E89A2B;
+  --danger:              #DC3545;
+  --info:                #3DA9FC;
+
+  --bs-body-bg:          var(--bg-page);
+  --bs-body-color:       var(--text-main);
+  --bs-secondary-color:  var(--text-muted);
+  --bs-border-color:     var(--border);
+  --bs-tertiary-bg:      var(--bg-soft);
+}

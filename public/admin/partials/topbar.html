@@ -1,0 +1,38 @@
+<nav class="app-topbar navbar fixed-top px-3">
+  <div class="d-flex align-items-center w-100 gap-3">
+    <button class="navbar-toggler border-0 d-lg-none" type="button"
+            data-bs-toggle="offcanvas" data-bs-target="#appSidebar">
+      <i class="bi bi-list fs-4"></i>
+    </button>
+
+    <div class="small d-none d-md-flex align-items-center gap-2 text-muted">
+      <span>Админ</span>
+      <i class="bi bi-chevron-right" style="font-size: 0.7rem"></i>
+      <span class="fw-semibold" id="crumb">Дэшборд</span>
+    </div>
+
+    <div class="flex-grow-1 d-none d-md-block" style="max-width: 420px">
+      <input type="text" class="form-control form-control-sm rounded-pill" placeholder="Поиск по админке…">
+    </div>
+
+    <div class="ms-auto d-flex align-items-center gap-3">
+      <button class="btn btn-sm border-0 position-relative" type="button">
+        <i class="bi bi-bell fs-5 text-muted"></i>
+        <span class="position-absolute top-0 start-100 translate-middle p-1 bg-danger rounded-circle"></span>
+      </button>
+
+      <button id="themeToggle" class="btn btn-sm border-0" type="button">
+        <i class="bi bi-moon fs-5 text-muted"></i>
+      </button>
+
+      <div class="d-flex align-items-center gap-2">
+        <div class="rounded-circle d-flex align-items-center justify-content-center text-white fw-semibold"
+             style="width: 36px; height: 36px; background: var(--accent); font-size: 0.85rem">АС</div>
+        <div class="d-none d-md-block small lh-sm">
+          <div class="fw-semibold">Анна С.</div>
+          <div class="text-muted">Администратор</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

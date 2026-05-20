@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <script>
+    (function () {
+      var t = localStorage.getItem('ortobase-theme') === 'dark' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-bs-theme', t);
+    })();
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Каталог · Ortobase</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link id="theme-css" rel="stylesheet" href="assets/css/light.css">
+</head>
+<body data-page="catalog">
+
+  <div id="sidebar-mount"></div>
+  <div id="topbar-mount"></div>
+
+  <main class="app-main">
+    <div class="app-content">
+
+      <!-- Заголовок -->
+      <div class="d-flex align-items-center justify-content-between flex-wrap gap-3 mb-4">
+        <div>
+          <h1 class="h4 fw-bold mb-1">Каталог</h1>
+          <p class="small mb-0" style="color:var(--text-muted)">Управление товарами</p>
+        </div>
+        <button class="btn text-white border-0 d-flex align-items-center gap-2"
+                style="background:var(--accent)"
+                data-bs-toggle="modal" data-bs-target="#addProductModal">
+          <i class="bi bi-plus-lg"></i> Добавить товар
+        </button>
+      </div>
+
+      <!-- Тулбар: табы + поиск -->
+      <div class="card border mb-0 border-bottom-0 rounded-bottom-0" style="border-color:var(--border) !important">
+        <div class="card-body py-2 px-3 d-flex align-items-center justify-content-between flex-wrap gap-2">
+
+          <div class="d-flex gap-1" id="catalog-tabs">
+            <button class="btn btn-sm rounded-pill catalog-tab active" data-category="all"
+                    style="font-size:0.8rem">Все</button>
+            <button class="btn btn-sm rounded-pill catalog-tab" data-category="insoles"
+                    style="font-size:0.8rem">Стельки</button>
+            <button class="btn btn-sm rounded-pill catalog-tab" data-category="shoes"
+                    style="font-size:0.8rem">Обувь</button>
+            <button class="btn btn-sm rounded-pill catalog-tab" data-category="corsets"
+                    style="font-size:0.8rem">Корсеты</button>
+          </div>
+
+          <div style="max-width:280px;width:100%">
+            <input id="catalog-search" type="text" class="form-control form-control-sm rounded-pill"
+                   placeholder="Поиск по названию…">
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Таблица -->
+      <div class="card border rounded-top-0" style="border-color:var(--border) !important">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle mb-0" id="catalog-table">
+            <thead style="border-bottom:2px solid var(--border)">
+              <tr class="small fw-semibold" style="color:var(--text-muted)">
+                <th class="ps-3 py-3">Товар</th>
+                <th>Категория</th>
+                <th>Цена</th>
+                <th>Размеры</th>
+                <th>Наличие</th>
+                <th>Популярность</th>
+                <th class="pe-3"></th>
+              </tr>
+            </thead>
+            <tbody id="catalog-tbody">
+
+              <!-- Стельки Comfort+ -->
+              <tr data-category="insoles">
+                <td class="ps-3">
+                  <div class="d-flex align-items-center gap-3">
+                    <img src="https://placehold.co/44x44/BEE3F8/1E5F8E?text=СТ" class="rounded-2 flex-shrink-0" width="44" height="44" alt="">
+                    <div>
+                      <div class="fw-medium small">Стельки Comfort+</div>
+                      <div style="font-size:0.75rem;color:var(--text-muted)">Поддержка свода · антибакт.</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="badge rounded-pill" style="background:var(--bg-soft);color:var(--accent);font-weight:500">Стельки</span></td>
+                <td class="fw-medium small">1 490 ₽</td>
+                <td>
+                  <div class="d-flex flex-wrap gap-1">
+                    <span class="badge rounded-1" style="background:var(--bg-soft);color:var(--text-main);font-weight:400">36</span>
+                    <span class="badge rounded-1" style="background:var(--bg-soft);color:var(--text-main);font-weight:400">38</span>
+                    <span class="badge rounded-1" style="background:var(--bg-soft);color:var(--text-main);font-weight:400">40</span>
+                    <span class="badge rounded-1" style="background:var(--bg-soft);color:var(--text-main);font-weight:400">42</span>
+                  </div>
+                </td>
+                <td><span class="badge rounded-pill" style="background:#D1FAE5;color:#065F46">В наличии</span></td>
+                <td style="min-width:100px">
+                  <div class="d-flex align-items-center gap-2">
+                    <div class="rounded-pill flex-grow-1 overflow-hidden" style="height:6px;background:var(--border)">
+                      <div class="rounded-pill h-100" style="width:87%;background:var(--accent)"></div>
+                    </div>
+                    <span style="font-size:0.72rem;color:var(--text-muted);min-width:28px">87%</span>
+                  </div>
+                </td>
+                <td class="pe-3">
+                  <div class="d-flex gap-1 justify-content-end">
+                    <button class="btn btn-sm border-0 p-1" style="color:var(--text-muted)" title="Редактировать">
+                      <i class="bi bi-pencil"></i>
+                    </button>
+                    <button class="btn btn-sm border-0 p-1" style="color:var(--danger)" title="Удалить">
+                      <i class="bi bi-trash"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- ActiveRun -->
+              <tr data-category="insoles">
+                <td class="ps-3">
+                  <div class="d-flex align-items-center gap-3">
+                    <img src="https://placehold.co/44x44/BEE3F8/1E5F8E?text=АР" class="rounded-2 flex-shrink-0" width="44" height="44" alt="">
+                    <div>
+                      <div class="fw-medium small">Спортивные стельки ActiveRun</div>
+                      <div style="font-size:0.75rem;color:var(--text-muted)">Амортизация · дышащий слой</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="badge rounded-pill" style="background:var(--bg-soft);color:var(--accent);font-weight:500">Стельки</span></td>
+                <td class="fw-medium small">1 990 ₽</td>
+                <td>
+                  <div class="d-flex flex-wrap gap-1">
+                    <span class="badge rounded-1" style="background:var(--bg-soft);color:var(--text-main);font-weight:400">38</span>
+                    <span class="badge rounded-1" style="background:var(--bg-soft);color:var(--text-main);font-weight:400">40</span>
+                    <span class="badge rounded-1" style="background:var(--bg-soft);color:var(--text-main);font-weight:400">42</span>
+                    <span class="badge rounded-1 text-decoration-line-through opacity-50" style="background:var(--border);color:var(--text-muted);font-weight:400">44</span>
+                  </div>
+                </td>
+                <td><span class="badge rounded-pill" style="background:#D1FAE5;color:#065F46">В наличии</span></td>
+                <td style="min-width:100px">
+                  <div class="d-flex align-items-center gap-2">
+                    <div class="rounded-pill flex-grow-1 overflow-hidden" style="height:6px;background:var(--border)">
+                      <div class="rounded-pill h-100" style="width:64%;background:var(--accent)"></div>
+                    </div>
+                    <span style="font-size:0.72rem;color:var(--text-muted);min-width:28px">64%</span>
+                  </div>
+                </td>
+                <td class="pe-3">
+                  <div class="d-flex gap-1 justify-content-end">
+                    <button class="btn btn-sm border-0 p-1" style="color:var(--text-muted)"><i class="bi bi-pencil"></i></button>
+                    <button class="btn btn-sm border-0 p-1" style="color:var(--danger)"><i class="bi bi-trash"></i></button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- OrthoSoft Casual -->
+              <tr data-category="shoes">
+                <td class="ps-3">
+                  <div class="d-flex align-items-center gap-3">
+                    <img src="https://placehold.co/44x44/BEE3F8/1E5F8E?text=ОС" class="rounded-2 flex-shrink-0" width="44" height="44" alt="">
+                    <div>
+                      <div class="fw-medium small">Кроссовки OrthoSoft Casual</div>
+                      <div style="font-size:0.75rem;color:var(--text-muted)">Жёсткий задник · анат. колодка</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="badge rounded-pill" style="background:#FFF3CD;color:#92400E;font-weight:500">Обувь</span></td>
+                <td class="fw-medium small">7 490 ₽</td>
+                <td>
+                  <div class="d-flex flex-wrap gap-1">
+                    <span class="badge rounded-1 text-decoration-line-through opacity-50" style="background:var(--border);color:var(--text-muted);font-weight:400">36</span>
+                    <span class="badge rounded-1" style="background:var(--bg-soft);color:var(--text-main);font-weight:400">38</span>
+                    <span class="badge rounded-1 text-decoration-line-through opacity-50" style="background:var(--border);color:var(--text-muted);font-weight:400">40</span>
+                    <span class="badge rounded-1" style="background:var(--bg-soft);color:var(--text-main);font-weight:400">42</span>
+                  </div>
+                </td>
+                <td><span class="badge rounded-pill" style="background:#FEE2E2;color:#991B1B">Нет в наличии</span></td>
+                <td style="min-width:100px">
+                  <div class="d-flex align-items-center gap-2">
+                    <div class="rounded-pill flex-grow-1 overflow-hidden" style="height:6px;background:var(--border)">
+                      <div class="rounded-pill h-100" style="width:45%;background:var(--accent)"></div>
+                    </div>
+                    <span style="font-size:0.72rem;color:var(--text-muted);min-width:28px">45%</span>
+                  </div>
+                </td>
+                <td class="pe-3">
+                  <div class="d-flex gap-1 justify-content-end">
+                    <button class="btn btn-sm border-0 p-1" style="color:var(--text-muted)"><i class="bi bi-pencil"></i></button>
+                    <button class="btn btn-sm border-0 p-1" style="color:var(--danger)"><i class="bi bi-trash"></i></button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- HealthStep Summer -->
+              <tr data-category="shoes">
+                <td class="ps-3">
+                  <div class="d-flex align-items-center gap-3">
+                    <img src="https://placehold.co/44x44/BEE3F8/1E5F8E?text=ХС" class="rounded-2 flex-shrink-0" width="44" height="44" alt="">
+                    <div>
+                      <div class="fw-medium small">Сандалии HealthStep Summer</div>
+                      <div style="font-size:0.75rem;color:var(--text-muted)">Регул. ремни · латексная подошва</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="badge rounded-pill" style="background:#FFF3CD;color:#92400E;font-weight:500">Обувь</span></td>
+                <td class="fw-medium small">4 990 ₽</td>
+                <td>
+                  <div class="d-flex flex-wrap gap-1">
+                    <span class="badge rounded-1" style="background:var(--bg-soft);color:var(--text-main);font-weight:400">36</span>
+                    <span class="badge rounded-1" style="background:var(--bg-soft);color:var(--text-main);font-weight:400">38</span>
+                    <span class="badge rounded-1" style="background:var(--bg-soft);color:var(--text-main);font-weight:400">40</span>
+                    <span class="badge rounded-1" style="background:var(--bg-soft);color:var(--text-main);font-weight:400">42</span>
+                  </div>
+                </td>
+                <td><span class="badge rounded-pill" style="background:#D1FAE5;color:#065F46">В наличии</span></td>
+                <td style="min-width:100px">
+                  <div class="d-flex align-items-center gap-2">
+                    <div class="rounded-pill flex-grow-1 overflow-hidden" style="height:6px;background:var(--border)">
+                      <div class="rounded-pill h-100" style="width:72%;background:var(--accent)"></div>
+                    </div>
+                    <span style="font-size:0.72rem;color:var(--text-muted);min-width:28px">72%</span>
+                  </div>
+                </td>
+                <td class="pe-3">
+                  <div class="d-flex gap-1 justify-content-end">
+                    <button class="btn btn-sm border-0 p-1" style="color:var(--text-muted)"><i class="bi bi-pencil"></i></button>
+                    <button class="btn btn-sm border-0 p-1" style="color:var(--danger)"><i class="bi bi-trash"></i></button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- BackFix -->
+              <tr data-category="corsets">
+                <td class="ps-3">
+                  <div class="d-flex align-items-center gap-3">
+                    <img src="https://placehold.co/44x44/BEE3F8/1E5F8E?text=БФ" class="rounded-2 flex-shrink-0" width="44" height="44" alt="">
+                    <div>
+                      <div class="fw-medium small">Корсет BackFix</div>
+                      <div style="font-size:0.75rem;color:var(--text-muted)">4 ребра жёсткости · регулировка</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="badge rounded-pill" style="background:#EDE9FE;color:#5B21B6;font-weight:500">Корсеты</span></td>
+                <td class="fw-medium small">3 490 ₽</td>
+                <td>
+                  <div class="d-flex flex-wrap gap-1">
+                    <span class="badge rounded-1" style="background:var(--bg-soft);color:var(--text-main);font-weight:400">S</span>
+                    <span class="badge rounded-1" style="background:var(--bg-soft);color:var(--text-main);font-weight:400">M</span>
+                    <span class="badge rounded-1" style="background:var(--bg-soft);color:var(--text-main);font-weight:400">L</span>
+                    <span class="badge rounded-1" style="background:var(--bg-soft);color:var(--text-main);font-weight:400">XL</span>
+                  </div>
+                </td>
+                <td><span class="badge rounded-pill" style="background:#D1FAE5;color:#065F46">В наличии</span></td>
+                <td style="min-width:100px">
+                  <div class="d-flex align-items-center gap-2">
+                    <div class="rounded-pill flex-grow-1 overflow-hidden" style="height:6px;background:var(--border)">
+                      <div class="rounded-pill h-100" style="width:53%;background:var(--accent)"></div>
+                    </div>
+                    <span style="font-size:0.72rem;color:var(--text-muted);min-width:28px">53%</span>
+                  </div>
+                </td>
+                <td class="pe-3">
+                  <div class="d-flex gap-1 justify-content-end">
+                    <button class="btn btn-sm border-0 p-1" style="color:var(--text-muted)"><i class="bi bi-pencil"></i></button>
+                    <button class="btn btn-sm border-0 p-1" style="color:var(--danger)"><i class="bi bi-trash"></i></button>
+                  </div>
+                </td>
+              </tr>
+
+              <!-- KneePro -->
+              <tr data-category="corsets">
+                <td class="ps-3">
+                  <div class="d-flex align-items-center gap-3">
+                    <img src="https://placehold.co/44x44/BEE3F8/1E5F8E?text=КП" class="rounded-2 flex-shrink-0" width="44" height="44" alt="">
+                    <div>
+                      <div class="fw-medium small">Бандаж на колено KneePro</div>
+                      <div style="font-size:0.75rem;color:var(--text-muted)">Силик. вставка · не сползает</div>
+                    </div>
+                  </div>
+                </td>
+                <td><span class="badge rounded-pill" style="background:#EDE9FE;color:#5B21B6;font-weight:500">Корсеты</span></td>
+                <td class="fw-medium small">1 290 ₽</td>
+                <td>
+                  <div class="d-flex flex-wrap gap-1">
+                    <span class="badge rounded-1" style="background:var(--bg-soft);color:var(--text-main);font-weight:400">S</span>
+                    <span class="badge rounded-1 text-decoration-line-through opacity-50" style="background:var(--border);color:var(--text-muted);font-weight:400">M</span>
+                    <span class="badge rounded-1" style="background:var(--bg-soft);color:var(--text-main);font-weight:400">L</span>
+                  </div>
+                </td>
+                <td><span class="badge rounded-pill" style="background:#FEE2E2;color:#991B1B">Нет в наличии</span></td>
+                <td style="min-width:100px">
+                  <div class="d-flex align-items-center gap-2">
+                    <div class="rounded-pill flex-grow-1 overflow-hidden" style="height:6px;background:var(--border)">
+                      <div class="rounded-pill h-100" style="width:38%;background:var(--accent)"></div>
+                    </div>
+                    <span style="font-size:0.72rem;color:var(--text-muted);min-width:28px">38%</span>
+                  </div>
+                </td>
+                <td class="pe-3">
+                  <div class="d-flex gap-1 justify-content-end">
+                    <button class="btn btn-sm border-0 p-1" style="color:var(--text-muted)"><i class="bi bi-pencil"></i></button>
+                    <button class="btn btn-sm border-0 p-1" style="color:var(--danger)"><i class="bi bi-trash"></i></button>
+                  </div>
+                </td>
+              </tr>
+
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Пустой стейт -->
+        <div id="catalog-empty" class="d-none text-center py-5" style="color:var(--text-muted)">
+          <i class="bi bi-search fs-2 d-block mb-2"></i>
+          <div class="small">Ничего не найдено</div>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Модалка: добавить товар -->
+  <div class="modal fade" id="addProductModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title fw-semibold">Добавить товар</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+          <div class="mb-3">
+            <label class="form-label small fw-medium">Название</label>
+            <input type="text" class="form-control" placeholder="Например: Стельки Comfort+">
+          </div>
+          <div class="row g-3 mb-3">
+            <div class="col-6">
+              <label class="form-label small fw-medium">Категория</label>
+              <select class="form-select">
+                <option>Стельки</option>
+                <option>Обувь</option>
+                <option>Корсеты</option>
+              </select>
+            </div>
+            <div class="col-6">
+              <label class="form-label small fw-medium">Цена, ₽</label>
+              <input type="number" class="form-control" placeholder="1490">
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label small fw-medium">Размеры</label>
+            <input type="text" class="form-control" placeholder="36, 38, 40, 42">
+          </div>
+          <div class="mb-3">
+            <label class="form-label small fw-medium">Описание</label>
+            <textarea class="form-control" rows="3" placeholder="Краткое описание товара…"></textarea>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="inStockCheck" checked>
+            <label class="form-check-label small" for="inStockCheck">Есть в наличии</label>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-sm" style="color:var(--text-muted)"
+                  data-bs-dismiss="modal">Отмена</button>
+          <button type="button" class="btn btn-sm text-white border-0"
+                  style="background:var(--accent)"
+                  data-bs-dismiss="modal">Добавить</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/layout.js"></script>
+  <script src="assets/js/theme.js"></script>
+  <script src="assets/js/admin.js"></script>
+</body>
+</html>
