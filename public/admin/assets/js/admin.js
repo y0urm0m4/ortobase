@@ -30,6 +30,38 @@ $(function () {
     $('#catalog-search').on('input', filterTable);
   }
 
+  /* ---- Пользователи: табы + поиск ---- */
+  if ($('#users-table').length) {
+
+    var activeStatus = 'all';
+
+    function filterUsers() {
+      var query = $('#users-search').val().toLowerCase();
+      var visibleCount = 0;
+
+      $('#users-tbody tr').each(function () {
+        var matchStatus = activeStatus === 'all' || $(this).data('status') === activeStatus;
+        var name  = $(this).find('td:eq(0) .fw-medium').text().toLowerCase();
+        var email = $(this).find('td:eq(1)').text().toLowerCase();
+        var matchQuery = !query || name.includes(query) || email.includes(query);
+        var visible = matchStatus && matchQuery;
+        $(this).toggle(visible);
+        if (visible) visibleCount++;
+      });
+
+      $('#users-count').text(visibleCount);
+    }
+
+    $(document).on('click', '.users-tab', function () {
+      activeStatus = $(this).data('status');
+      $('.users-tab').removeClass('active');
+      $(this).addClass('active');
+      filterUsers();
+    });
+
+    $('#users-search').on('input', filterUsers);
+  }
+
   /* ---- Дэшборд: бар-чарт ---- */
   if (!$('#catalogChart').length) return;
 

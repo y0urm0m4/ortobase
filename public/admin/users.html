@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <script>
+        (function() {
+            var t = localStorage.getItem('ortobase-theme') === 'dark' ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-bs-theme', t);
+        })();
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Пользователи · Ortobase</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link id="theme-css" rel="stylesheet" href="assets/css/light.css">
+</head>
+
+<body data-page="users">
+
+    <div id="sidebar-mount"></div>
+    <div id="topbar-mount"></div>
+
+    <main class="app-main">
+        <div class="app-content">
+
+            <!-- Заголовок -->
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-3 mb-4">
+                <div>
+                    <h1 class="h4 fw-bold mb-1">Пользователи</h1>
+                    <p class="small mb-0" style="color:var(--text-muted)">Учётки сотрудников с доступом к админке.</p>
+                </div>
+                <div class="d-flex gap-2">
+                    <button class="btn btn-sm text-white border-0 rounded-2 fw-medium" style="background:var(--accent)" data-bs-toggle="modal" data-bs-target="#inviteModal">
+            <i class="bi bi-person-plus me-1"></i>Пригласить
+          </button>
+                </div>
+            </div>
+
+            <!-- Тулбар: табы + поиск -->
+            <div class="card border mb-0 border-bottom-0 rounded-bottom-0" style="border-color:var(--border) !important">
+                <div class="card-body py-2 px-3 d-flex align-items-center justify-content-between flex-wrap gap-2">
+
+                    <div class="d-flex gap-1">
+                        <button class="btn btn-sm rounded-pill users-tab active" data-status="all" style="font-size:0.8rem">Все · 6</button>
+                        <button class="btn btn-sm rounded-pill users-tab" data-status="active" style="font-size:0.8rem">Активные</button>
+                        <button class="btn btn-sm rounded-pill users-tab" data-status="invited" style="font-size:0.8rem">Приглашены</button>
+                        <button class="btn btn-sm rounded-pill users-tab" data-status="inactive" style="font-size:0.8rem">Отключены</button>
+                    </div>
+
+                    <div class="position-relative" style="max-width:280px;width:100%">
+                        <i class="bi bi-search position-absolute top-50 translate-middle-y" style="left:10px;color:var(--text-muted);font-size:0.85rem;pointer-events:none"></i>
+                        <input id="users-search" type="text" class="form-control form-control-sm rounded-pill ps-4" placeholder="Поиск по имени или e-mail">
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Таблица -->
+            <div class="card border rounded-top-0" style="border-color:var(--border) !important">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0" id="users-table">
+                        <thead style="border-bottom:2px solid var(--border)">
+                            <tr class="small fw-semibold" style="color:var(--text-muted);text-transform:uppercase;letter-spacing:0.03em">
+                                <th class="ps-3 py-3">Имя</th>
+                                <th>E-Mail</th>
+                                <th>Роль</th>
+                                <th>Статус</th>
+                                <th>Был в системе</th>
+                                <th class="pe-3">Действия</th>
+                            </tr>
+                        </thead>
+                        <tbody id="users-tbody">
+
+                            <!-- Анна Соколова -->
+                            <tr data-status="active">
+                                <td class="ps-3">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="rounded-circle flex-shrink-0 d-flex align-items-center justify-content-center fw-semibold text-white" style="width:36px;height:36px;min-width:36px;background:#3DA9FC;font-size:0.8rem">АС</div>
+                                        <span class="fw-medium small">Анна Соколова</span>
+                                    </div>
+                                </td>
+                                <td class="small" style="color:var(--text-muted)">anna@ortobase.ru</td>
+                                <td class="small">Администратор</td>
+                                <td><span class="badge rounded-pill" style="background:#D1FAE5;color:#065F46">Активен</span></td>
+                                <td class="small" style="color:var(--text-muted)">5 мин назад</td>
+                                <td class="pe-3">
+                                    <div class="dropdown">
+                                        <button class="btn btn-sm border-0 p-1" style="color:var(--text-muted)" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="bi bi-three-dots"></i>
+                    </button>
+                                        <ul class="dropdown-menu dropdown-menu-end shadow-sm" style="font-size:0.85rem;min-width:160px">
+                                            <li><a class="dropdown-item" href="#">Редактировать</a></li>
+                                            <li><a class="dropdown-item" href="#">Сбросить пароль</a></li>
+                                            <li>
+                                                <hr class="dropdown-divider">
+                                            </li>
+                                            <li><a class="dropdown-item text-danger" href="#">Отключить</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- Дмитрий Захаров -->
+                            <tr data-status="active">
+                                <td class="ps-3">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="rounded-circle flex-shrink-0 d-flex align-items-center justify-content-center fw-semibold text-white" style="width:36px;height:36px;min-width:36px;background:#2EA66C;font-size:0.8rem">ДЗ</div>
+                                        <span class="fw-medium small">Дмитрий Захаров</span>
+                                    </div>
+                                </td>
+                                <td class="small" style="color:var(--text-muted)">dzakharov@ortobase.ru</td>
+                                <td class="small">Менеджер</td>
+                                <td><span class="badge rounded-pill" style="background:#D1FAE5;color:#065F46">Активен</span></td>
+                                <td class="small" style="color:var(--text-muted)">1 ч назад</td>
+                                <td class="pe-3">
+                                    <div class="dropdown">
+                                        <button class="btn btn-sm border-0 p-1" style="color:var(--text-muted)" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="bi bi-three-dots"></i>
+                    </button>
+                                        <ul class="dropdown-menu dropdown-menu-end shadow-sm" style="font-size:0.85rem;min-width:160px">
+                                            <li><a class="dropdown-item" href="#">Редактировать</a></li>
+                                            <li><a class="dropdown-item" href="#">Сбросить пароль</a></li>
+                                            <li>
+                                                <hr class="dropdown-divider">
+                                            </li>
+                                            <li><a class="dropdown-item text-danger" href="#">Отключить</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- Мария Петрова -->
+                            <tr data-status="active">
+                                <td class="ps-3">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="rounded-circle flex-shrink-0 d-flex align-items-center justify-content-center fw-semibold text-white" style="width:36px;height:36px;min-width:36px;background:#9B59B6;font-size:0.8rem">МП</div>
+                                        <span class="fw-medium small">Мария Петрова</span>
+                                    </div>
+                                </td>
+                                <td class="small" style="color:var(--text-muted)">maria.p@ortobase.ru</td>
+                                <td class="small">Менеджер</td>
+                                <td><span class="badge rounded-pill" style="background:#D1FAE5;color:#065F46">Активен</span></td>
+                                <td class="small" style="color:var(--text-muted)">вчера</td>
+                                <td class="pe-3">
+                                    <div class="dropdown">
+                                        <button class="btn btn-sm border-0 p-1" style="color:var(--text-muted)" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="bi bi-three-dots"></i>
+                    </button>
+                                        <ul class="dropdown-menu dropdown-menu-end shadow-sm" style="font-size:0.85rem;min-width:160px">
+                                            <li><a class="dropdown-item" href="#">Редактировать</a></li>
+                                            <li><a class="dropdown-item" href="#">Сбросить пароль</a></li>
+                                            <li>
+                                                <hr class="dropdown-divider">
+                                            </li>
+                                            <li><a class="dropdown-item text-danger" href="#">Отключить</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- Иван Орлов — Приглашён -->
+                            <tr data-status="invited">
+                                <td class="ps-3">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="rounded-circle flex-shrink-0 d-flex align-items-center justify-content-center fw-semibold text-white" style="width:36px;height:36px;min-width:36px;background:#E89A2B;font-size:0.8rem">ИО</div>
+                                        <span class="fw-medium small">Иван Орлов</span>
+                                    </div>
+                                </td>
+                                <td class="small" style="color:var(--text-muted)">i.orlov@ortobase.ru</td>
+                                <td class="small">Контент</td>
+                                <td><span class="badge rounded-pill" style="background:#DBEAFE;color:#1E40AF">Приглашён</span></td>
+                                <td class="small" style="color:var(--text-muted)">—</td>
+                                <td class="pe-3">
+                                    <div class="dropdown">
+                                        <button class="btn btn-sm border-0 p-1" style="color:var(--text-muted)" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="bi bi-three-dots"></i>
+                    </button>
+                                        <ul class="dropdown-menu dropdown-menu-end shadow-sm" style="font-size:0.85rem;min-width:160px">
+                                            <li><a class="dropdown-item" href="#">Отправить повторно</a></li>
+                                            <li>
+                                                <hr class="dropdown-divider">
+                                            </li>
+                                            <li><a class="dropdown-item text-danger" href="#">Отозвать</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- Елена Никитина -->
+                            <tr data-status="active">
+                                <td class="ps-3">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="rounded-circle flex-shrink-0 d-flex align-items-center justify-content-center fw-semibold text-white" style="width:36px;height:36px;min-width:36px;background:#1ABC9C;font-size:0.8rem">ЕН</div>
+                                        <span class="fw-medium small">Елена Никитина</span>
+                                    </div>
+                                </td>
+                                <td class="small" style="color:var(--text-muted)">elena.n@ortobase.ru</td>
+                                <td class="small">Контент</td>
+                                <td><span class="badge rounded-pill" style="background:#D1FAE5;color:#065F46">Активен</span></td>
+                                <td class="small" style="color:var(--text-muted)">3 дня назад</td>
+                                <td class="pe-3">
+                                    <div class="dropdown">
+                                        <button class="btn btn-sm border-0 p-1" style="color:var(--text-muted)" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="bi bi-three-dots"></i>
+                    </button>
+                                        <ul class="dropdown-menu dropdown-menu-end shadow-sm" style="font-size:0.85rem;min-width:160px">
+                                            <li><a class="dropdown-item" href="#">Редактировать</a></li>
+                                            <li><a class="dropdown-item" href="#">Сбросить пароль</a></li>
+                                            <li>
+                                                <hr class="dropdown-divider">
+                                            </li>
+                                            <li><a class="dropdown-item text-danger" href="#">Отключить</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <!-- Сергей Громов — Отключён -->
+                            <tr data-status="inactive">
+                                <td class="ps-3">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <div class="rounded-circle flex-shrink-0 d-flex align-items-center justify-content-center fw-semibold text-white" style="width:36px;height:36px;min-width:36px;background:#E74C3C;font-size:0.8rem">СГ</div>
+                                        <span class="fw-medium small">Сергей Громов</span>
+                                    </div>
+                                </td>
+                                <td class="small" style="color:var(--text-muted)">s.gromov@ortobase.ru</td>
+                                <td class="small">Менеджер</td>
+                                <td><span class="badge rounded-pill" style="background:var(--bg-soft);color:var(--text-muted)">Отключён</span></td>
+                                <td class="small" style="color:var(--text-muted)">2 нед назад</td>
+                                <td class="pe-3">
+                                    <div class="dropdown">
+                                        <button class="btn btn-sm border-0 p-1" style="color:var(--text-muted)" data-bs-toggle="dropdown" aria-expanded="false">
+                      <i class="bi bi-three-dots"></i>
+                    </button>
+                                        <ul class="dropdown-menu dropdown-menu-end shadow-sm" style="font-size:0.85rem;min-width:160px">
+                                            <li><a class="dropdown-item" href="#">Редактировать</a></li>
+                                            <li>
+                                                <hr class="dropdown-divider">
+                                            </li>
+                                            <li><a class="dropdown-item" style="color:var(--success)" href="#">Включить</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Показано N из 6 -->
+                <div class="px-3 py-2 small border-top" style="color:var(--text-muted);border-color:var(--border) !important">
+                    Показано <span id="users-count">6</span> из 6
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Модалка: Пригласить пользователя -->
+    <div class="modal fade" id="inviteModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title fw-semibold">Пригласить пользователя</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label small fw-medium">Имя</label>
+                        <input type="text" class="form-control" placeholder="Например: Иван Иванов">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-medium">E-mail</label>
+                        <input type="email" class="form-control" placeholder="ivan@ortobase.ru">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label small fw-medium">Роль</label>
+                        <select class="form-select">
+              <option>Менеджер</option>
+              <option>Контент</option>
+              <option>Администратор</option>
+            </select>
+                    </div>
+                    <div class="small p-3 rounded-2" style="background:var(--bg-soft);color:var(--text-muted)">
+                        <i class="bi bi-info-circle me-1"></i> Пользователь получит письмо со ссылкой для входа.
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm" style="color:var(--text-muted)" data-bs-dismiss="modal">Отмена</button>
+                    <button type="button" class="btn btn-sm text-white border-0" style="background:var(--accent)" data-bs-dismiss="modal">Отправить приглашение</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/layout.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/admin.js"></script>
+</body>
+
+</html>
